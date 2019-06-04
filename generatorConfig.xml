@@ -18,7 +18,7 @@
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
 
         <!-- 自定义注释生成器 -->
-        <commentGenerator type="me.mbgcomment.MySQLCommentGenerator">
+        <commentGenerator type="me.comment.MySQLCommentGenerator">
             <property name="author" value="yuanml"/>
             <property name="dateFormat" value="yyyy/MM/dd"/>
         </commentGenerator>
@@ -48,6 +48,10 @@
 
         <!-- 设置数据库的表名和实体类名 -->
         <table tableName="user_signature_number" domainObjectName="">
+            <!-- generatedKey用于生成生成主键的方法 -->
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>
+        </table>
+        <table tableName="custom_package" domainObjectName="">
             <!-- generatedKey用于生成生成主键的方法 -->
             <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>
         </table>

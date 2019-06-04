@@ -1,4 +1,4 @@
-package me.mbgcomment;
+package me.comment;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
