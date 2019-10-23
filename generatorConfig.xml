@@ -21,11 +21,15 @@
         <commentGenerator type="me.comment.MySQLCommentGenerator">
             <property name="author" value="yuanml"/>
             <property name="dateFormat" value="yyyy/MM/dd"/>
+            <!-- 删除代码中带有 代码生成器的注释信息 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressDate" value="true"/>
         </commentGenerator>
 
         <!-- 配置数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.51.218:6059/electronic_contract"
+                        connectionURL="jdbc:mysql://192.168.51.218:6059/asign_system"
                         userId="root" password="meimima">
             <!-- 设置 useInformationSchema 属性为 true -->
             <property name="useInformationSchema" value="true"/>
@@ -36,24 +40,20 @@
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
 
-        <!-- 生成 Mapper 接口的位置 -->
-        <sqlMapGenerator targetPackage="me.model.mapper" targetProject="src/main/java">
+        <!-- 生成 Mapper XML 接口的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <!-- 生成 Mapper XML 的位置 -->
+        <!-- 生成 Mapper 的位置 -->
         <javaClientGenerator targetPackage="me.model.mapper" type="XMLMAPPER" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 设置数据库的表名和实体类名 -->
-        <table tableName="user_signature_number" domainObjectName="">
+        <table tableName="" domainObjectName="">
             <!-- generatedKey用于生成生成主键的方法 -->
-            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>
-        </table>
-        <table tableName="custom_package" domainObjectName="">
-            <!-- generatedKey用于生成生成主键的方法 -->
-            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"/>
+            <!--<generatedKey column="menu_id" sqlStatement="SELECT LAST_INSERT_ID()"/>-->
         </table>
 
     </context>
