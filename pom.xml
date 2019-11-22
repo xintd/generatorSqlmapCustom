@@ -65,8 +65,8 @@
 <!--                        <version>8.0.18</version>-->
 <!--                    </dependency>-->
 <!--                    <dependency>-->
-<!--                        <groupId>me</groupId>-->
-<!--                        <artifactId>mbg-comment</artifactId>-->
+<!--                        <groupId>sql</groupId>-->
+<!--                        <artifactId>generator</artifactId>-->
 <!--                        <version>0.0.1</version>-->
 <!--                    </dependency>-->
 <!--                </dependencies>-->

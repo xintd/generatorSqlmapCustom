@@ -17,6 +17,14 @@
         <!-- 格式化 XML 代码 -->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
 
+        <!-- 此处是将UserMapper改名为UserDao ,UserMapper.xml改名为UserDao.xml 接口  -->
+        <plugin type="sql.generator.RenameMapperPlugins">
+            <property name="javaSearchString" value="Mapper$" />
+            <property name="javaReplaceString" value="Mapper" />
+            <property name="xmlSearchString" value="" />
+            <property name="xmlReplaceString" value="" />
+        </plugin>
+
         <!-- 自定义注释生成器 -->
         <commentGenerator type="sql.generator.MySQLCommentGenerator">
             <property name="author" value="yuanml"/>
