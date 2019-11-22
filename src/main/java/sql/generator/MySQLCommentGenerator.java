@@ -1,4 +1,4 @@
-package me.comment;
+package sql.generator;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -29,6 +29,9 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
         String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
         SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
 
+        topLevelClass.addImportedType("lombok.Data");
+        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+
         // 获取表注释
         String remarks = introspectedTable.getRemarks();
 
@@ -38,6 +41,8 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
         topLevelClass.addJavaDocLine(" * @author " + author);
         topLevelClass.addJavaDocLine(" * @date   " + dateFormatter.format(new Date()));
         topLevelClass.addJavaDocLine(" */");
+        topLevelClass.addAnnotation("@Data");
+        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
     }
 
     @Override
@@ -47,5 +52,6 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
         field.addJavaDocLine("/**");
         field.addJavaDocLine(" * " + remarks);
         field.addJavaDocLine(" */");
+        field.addAnnotation("@ApiModelProperty(value = \"" + remarks + "\")");
     }
 }
