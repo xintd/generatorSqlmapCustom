@@ -29,11 +29,14 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
         String dateFormat = properties.getProperty("dateFormat", "yyyy-MM-dd");
         SimpleDateFormat dateFormatter = new SimpleDateFormat(dateFormat);
 
+        topLevelClass.addImportedType("com.baomidou.mybatisplus.annotation.TableName");
         topLevelClass.addImportedType("lombok.Data");
         topLevelClass.addImportedType("lombok.EqualsAndHashCode");
 
         // 获取表注释
         String remarks = introspectedTable.getRemarks();
+        // 获取表名
+        String tableName = introspectedTable.getTableConfiguration().getTableName();
 
         topLevelClass.addJavaDocLine("/**");
         topLevelClass.addJavaDocLine(" * " + remarks);
@@ -43,6 +46,7 @@ public class MySQLCommentGenerator extends EmptyCommentGenerator {
         topLevelClass.addJavaDocLine(" */");
         topLevelClass.addAnnotation("@Data");
         topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
+        topLevelClass.addAnnotation("@TableName(\"" + tableName + "\")");
     }
 
     @Override
